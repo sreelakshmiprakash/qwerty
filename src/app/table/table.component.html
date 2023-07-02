@@ -1,0 +1,74 @@
+<div *ngIf="showDiv" class="colmn-wrapper">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="check-sec">
+        <div class="checkbox-group " *ngFor="let column of columnNames">
+          <input
+            type="checkbox"
+            [checked]="columnVisibility[column]"
+            (change)="toggleColumnVisibility(column)"
+          />
+          <label>{{ column }}</label>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="table-wrapper">
+  <p>Total: 7 folder and 8 files</p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><input type="checkbox" /></th>
+          <th *ngIf="columnVisibility.name">Name</th>
+          <th *ngIf="columnVisibility.classification">Classification</th>
+          <th *ngIf="columnVisibility.type">Type</th>
+          <th *ngIf="columnVisibility.fileType">File Type</th>
+          <th  *ngIf="columnVisibility.version">Version</th>
+          <th  *ngIf="columnVisibility.fileSize">File Size</th>
+          <th *ngIf="columnVisibility.action" colspan="2"></th>
+          <th *ngIf="columnVisibility.link"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data">
+          <td >
+            <div class="checkbox-group">
+              <input type="checkbox" />
+            </div>
+          </td>
+          <td *ngIf="columnVisibility.name">
+            {{ item.name }}
+          </td>
+          <td *ngIf="columnVisibility.classification">{{ item.classification }}</td>
+          <td *ngIf="columnVisibility.type">
+            <button class="type-btn red">{{ item.type }}</button>
+          </td>
+          <td *ngIf="columnVisibility.fileType">{{ item.fileType }}</td>
+          <td  *ngIf="columnVisibility.version">{{ item.version }}</td>
+          <td *ngIf="columnVisibility.fileSize">{{ item.fileSize }}</td>
+          <td *ngIf="columnVisibility.action">
+            <button class="green-btn">{{ item.action }}</button>
+          </td>
+          <td  *ngIf="columnVisibility.link">
+            <a href="/">{{ item.link }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <mat-paginator
+    *ngIf="data"
+    class="mat-paginator-sticky"
+    #paginator
+    [length]="data.length"
+    [pageSize]="pSize"
+    [pageSizeOptions]="dataSize"
+    [pageIndex]="currentPage"
+    (page)="changePage($event)"
+  >
+  </mat-paginator>
+</div>

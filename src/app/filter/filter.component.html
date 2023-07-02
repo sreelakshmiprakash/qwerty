@@ -1,0 +1,115 @@
+<div class="filter-wrapper">
+  <div class="filter-sec">
+    <div class="searchwrapper">
+      <div class="search-pos">
+        <img src="../../assets/search-iconsub.png" alt=" Search" />
+      </div>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Search..."
+      />
+    </div>
+    <div class="filter-wrap">
+      <button (click)="toggleDivVisibility()" class="filter-btn-main">
+        Filter
+      </button>
+      <button (click)="toggleColumn()"  class="filter-btn-main">Column</button>
+      <div>
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Action</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="filter-main" *ngIf="viewFilter">
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>classification</label>
+          <select
+            [(ngModel)]="selectedValue"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option value="" selected>Select</option>
+            <option *ngFor="let item of data" [value]="item.classification">
+              {{ item.classification }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Type</label>
+          <select
+            [(ngModel)]="selectedType"
+            class="form-select"
+            aria-label="Default select example"
+          >
+            <option value="" selected>Select</option>
+            <option *ngFor="let item of data" [value]="item.type">
+              {{ item.type }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Book Mark</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Status</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Added On x Before</label>
+          <input type="date" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Added On x After</label>
+          <input type="date" class="form-control" />
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Last Updated On x Before</label>
+          <input type="date" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="formWrapper">
+          <label>Last Updated On x After</label>
+          <input type="date" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="apply-filter-style">
+          <button (click)="filterData()" class="green-btn">Apply Filter</button>
+          <button class="cancel-btn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
