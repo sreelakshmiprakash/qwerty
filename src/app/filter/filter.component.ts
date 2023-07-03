@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
   
-  @Output() filter = new EventEmitter<string>();
+  @Output() filter = new EventEmitter<any>();
   @Output() toggleDivEvent = new EventEmitter<void>();
   selectedValue = '';
   selectedType = '';
@@ -15,19 +15,20 @@ export class FilterComponent implements OnInit {
   showDiv = false;  
   selectedFileType = '';
   selectedSize = '';
-  selectedData: any = {
-    classification: this.selectedValue,
-    type: this.selectedType,
-    fileType: this.selectedFileType,
-    fileSize: this.selectedSize,
-  };
+ 
 
   constructor() {}
 
   ngOnInit() {}
   filterData() {
-    this.filter.emit(this.selectedValue);
-    console.log('value', this.selectedValue);
+    const selectedData: any = {
+      classification: this.selectedValue,
+      type: this.selectedType,
+      fileType: this.selectedFileType,
+      fileSize: this.selectedSize,
+    };
+    this.filter.emit(selectedData);
+    console.log('value', selectedData);
   }
 
   toggleDivVisibility() {
