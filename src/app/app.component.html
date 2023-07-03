@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
 <div class="container">
-  <app-filter (toggleDivEvent)="toggleDiv()"  [data]="tableData" (filter)="applyFilter($event)"></app-filter>
+  <app-filter (toggleDivEvent)="toggleDiv()" (filter)="applyFilter($event)"></app-filter>
   <app-table [showDiv]="showDiv" [data]="filteredData" ></app-table>
 </div>

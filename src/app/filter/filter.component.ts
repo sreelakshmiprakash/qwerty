@@ -6,14 +6,22 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
-  @Input() data: any[] | undefined;
+  
   @Output() filter = new EventEmitter<string>();
   @Output() toggleDivEvent = new EventEmitter<void>();
   selectedValue = '';
   selectedType = '';
-
   viewFilter = false;
-  showDiv = false;
+  showDiv = false;  
+  selectedFileType = '';
+  selectedSize = '';
+  selectedData: any = {
+    classification: this.selectedValue,
+    type: this.selectedType,
+    fileType: this.selectedFileType,
+    fileSize: this.selectedSize,
+  };
+
   constructor() {}
 
   ngOnInit() {}

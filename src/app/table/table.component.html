@@ -21,7 +21,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th><input type="checkbox" /></th>
+        
           <th *ngIf="columnVisibility.name">Name</th>
           <th *ngIf="columnVisibility.classification">Classification</th>
           <th *ngIf="columnVisibility.type">Type</th>
@@ -33,12 +33,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of data">
-          <td >
-            <div class="checkbox-group">
-              <input type="checkbox" />
-            </div>
-          </td>
+        <tr *ngFor="let item of data | slice: (pIndex * pSize):(pIndex + 1) * pSize">
+        
           <td *ngIf="columnVisibility.name">
             {{ item.name }}
           </td>
